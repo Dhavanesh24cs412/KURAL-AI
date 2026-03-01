@@ -8,12 +8,12 @@ This is the primary landing page of the KURAL-AI project.
 
 KURAL-AI is an AI-powered project focused on leveraging artificial intelligence for innovative applications. The repository uses **Git**, **GitHub**, and **Pull Requests** for collaborative development.
 
+---
+
 ### Tech Stack
 
-- **JavaScript/TypeScript** - Primary programming language
-- **React.js** - Frontend framework
-- **AI/ML APIs** - Integration with large language models and AI services
-- **Node.js** - Backend runtime
+- **JavaScript** (99.4%)
+- **Other** (0.6%)
 
 ---
 
@@ -23,6 +23,8 @@ KURAL-AI is an AI-powered project focused on leveraging artificial intelligence 
 - [For Contributors (Fork & PR)](#for-contributors-fork--pr)
 - [For Admins (Review & Merge)](#for-admins-review--merge)
 - [Pull Request Template](#pull-request-template)
+- [Commit Message Guidelines](#commit-message-guidelines)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -30,82 +32,165 @@ KURAL-AI is an AI-powered project focused on leveraging artificial intelligence 
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn package manager
-- Git installed on your system
+- Node.js and npm installed
+- Git configured
 
 ### Installation
 
-1. Fork the repository
-2. Clone your fork:
-   ```bash
-   git clone https://github.com/your-username/KURAL-AI.git
-   ```
-3. Navigate to the project directory:
-   ```bash
-   cd KURAL-AI
-   ```
-4. Install dependencies:
-   ```bash
-   npm install
-   ```
-5. Start the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+npm run dev
+```
 
 ---
 
 ## 👥 For Contributors (Fork & PR)
 
-### How to Contribute
+### Step 1: Fork the Repository
 
-1. **Fork** this repository
-2. **Clone** your fork locally
-3. **Create a new branch** for your feature:
-   ```bash
-   git checkout -b feature/your-feature-name
+1. Visit the main repository  
+   👉 [Kural Admin Repository](https://github.com/Dhavanesh24cs412/KURAL-AI)
+2. Click **Fork** (top-right corner)
+3. Your fork will be created at:  
    ```
-4. **Make your changes** and test thoroughly
-5. **Commit** your changes using conventional commits format
-6. **Push** to your fork:
-   ```bash
-   git push origin feature/your-feature-name
+   https://github.com/Dhavanesh24cs412/KURAL-AI.git
    ```
-7. **Open a Pull Request** to the main repository
-
-### Contribution Guidelines
-
-- Follow the existing code style
-- Write clear commit messages
-- Test your changes before submitting
-- Update documentation as needed
-- Be respectful and constructive in discussions
 
 ---
 
-## 👨‍💻 For Admins (Review & Merge)
+### Step 2: Clone Your Fork Locally
 
-### Review Process
+```bash
+git clone https://github.com/contributor-name/KURAL-AI.git
+cd KURAL-AI
+```
 
-1. Review the PR description and changes
-2. Check if tests pass
-3. Review code quality and adherence to guidelines
-4. Provide constructive feedback
-5. Approve and merge when ready
+---
 
-### Merge Guidelines
+### Step 3: Add Upstream Remote (Main Repository)
 
-- Ensure PR follows the template
-- Verify all conversations are resolved
-- Squash and merge for feature branches
-- Keep the commit history clean
+```bash
+git remote add upstream https://github.com/Dhavanesh24cs412/KURAL-AI.git
+git fetch upstream
+```
 
+Verify remotes:
+
+```bash
+git remote -v
+```
+
+---
+
+### Step 4: Create a Feature Branch
+
+> **Never work directly on `main`**
+
+```bash
+git checkout main
+git pull upstream main
+git checkout -b your-name-branch
+```
+
+**Branch Naming Conventions:**
+
+- `feature/` – new features
+- `fix/` – bug fixes
+- `docs/` – documentation
+- `chore/` – maintenance tasks
+
+> **Tip:** Use your name as part of the branch name to avoid branch clutter. Example: `yourname-branch`
+
+---
+
+### Step 5: Make Your Changes
+
+```bash
+npm install
+npm run dev
+```
+
+Make your changes, then stage and commit:
+
+```bash
+git add .
+git commit -m "feat: add responsive navbar"
+```
+
+---
+
+### Step 6: Push Changes and Create a Pull Request
+
+```bash
+git push origin yourname-branch
+```
+
+Then open a **Pull Request** on GitHub with a clear description of your changes.
+
+---
+
+## 🔍 For Admins (Review & Merge)
+
+### Reviewing Pull Requests
+
+1. Check out the PR branch:
+
+```bash
+git checkout main
+git pull origin main
+```
+2. Admin Testing Workflow
+
+```bash
+# Get the latest data from the repository
+git fetch origin
+```
+3. Check out the contributor's branch:
+
+```bash
+# Switch to their branch
+git checkout <branch-name>
+
+# Ensure it's up to date
+git pull origin <branch-name>
+```
+4. Clean Install & Run:
+
+```bash
+# Install any new packages they might have added
+npm install
+
+# Run the development server
+npm run dev
+```
+5. Verification Checklist:
+   
+   [ ] Does the app start without console errors?
+   [ ] Does the specific feature/fix work as described in the PR?
+   [ ] Does it work on different screen sizes (Responsive Check)?
+   [ ] Did it break any existing features?
+
+6. Merge via GitHub (Recommended):
+
+   Once testing passes, return to the GitHub PR web interface and select "Squash and merge" to keep the main history clean.
+   
+7. Cleanup your local environment:
+
+```bash
+# Switch back to main
+git checkout main
+
+# Update your local main with the new merge
+git pull origin main
+
+# Delete the local copy of their feature branch
+git branch -d <branch-name>
+```
 ---
 
 ## 📝 Pull Request Template
 
-When creating a PR, include the following information:
+When creating a PR, include the following information in `.github/pull_request_template.md`:
 
 ```markdown
 ## Changes
@@ -127,31 +212,21 @@ When creating a PR, include the following information:
 
 Follow the conventional commits format:
 
-```
-feat: add new AI integration
-fix: resolve API connection issue
-docs: update README with setup instructions
+```text
+feat: add login validation
+fix: mobile navbar overlap
+docs: update README
 chore: update dependencies
 ```
 
-**Format:**
-
-`<type>: <description>`
-
-Types include:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `chore`: Maintenance tasks
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
+**Format:** `<type>: <description>`
 
 ---
 
 ## 🆘 Troubleshooting
 
 | Issue | Solution |
-|-------|----------|
+|------|----------|
 | `npm install` fails | `rm -rf node_modules package-lock.json && npm install` |
 | Merge conflict | `git pull upstream main` and resolve conflicts manually |
 | Branch is behind main | `git pull upstream main` to sync with latest changes |
@@ -162,7 +237,6 @@ Types include:
 ## 📧 Need Help?
 
 If you encounter any issues, please:
-
 1. Check the **Troubleshooting** section above
 2. Review existing issues on GitHub
 3. Create a new issue with a clear description
@@ -171,4 +245,4 @@ If you encounter any issues, please:
 
 ## 🎉 Happy Coding!
 
-Thank you for contributing to KURAL-AI! 🚀
+Thank you for contributing to Kural Admin Dashboard! 🚀
